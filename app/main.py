@@ -33,3 +33,8 @@ def make_auth_request(request: Request, state: str):
     # Redirect to target
     logger.info(f"Request successfully processed, redirecting to {redirect_uri}")
     return RedirectResponse(url=f'{redirect_uri}?{request.query_params}')
+
+
+@app.get('/')
+def liveness_check():
+    return {'status': 'OK'}
