@@ -18,10 +18,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - {{ .Values.ingress.host | quote }}
+        - {{ .Values.ingress.host }}
       secretName: {{ .Values.ingress.secretName }}
   rules:
-  - host: {{ .Values.ingress.host | quote }}
+  - host: {{ .Values.ingress.host }}
     http:
       paths:
       - path: /
