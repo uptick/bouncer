@@ -77,27 +77,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-chart: https://github.com/uptick/bouncer@master
-cluster: eks-prod
-namespace: default
-bump: 15
-tags:
-  - test
-  - service_app
-environment:
-  TEST_ENV: hi
-image:
-  repository: "305686791668.dkr.ecr.ap-southeast-2.amazonaws.com/bouncer"
-  pullPolicy: Always
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
-ingress:
-  enabled: true
-  annotations:
-    cert-manager.io/cluster-issuer: cluster-http-issuer
-    ingress.kubernetes.io/ssl-redirect: "true"
-  host: bouncer.onuptick.com
-  serviceName: bouncer
-  servicePort: 80
-  secretName: bouncer-cert-key

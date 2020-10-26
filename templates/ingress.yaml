@@ -25,10 +25,7 @@ spec:
     http:
       paths:
       - path: /
-        pathType: Prefix
         backend:
-          service:
-            name: {{ .Values.ingress.serviceName }}
-            port:
-              number: {{ .Values.ingress.servicePort }}
+          serviceName: {{ .Values.ingress.serviceName }}
+          servicePort: {{ .Values.ingress.servicePort }}
 {{- end }}
