@@ -1,10 +1,10 @@
 import base64
 import json
 import logging
+from typing import Optional
 
 from fastapi import FastAPI, HTTPException, Request
 from starlette.responses import RedirectResponse
-
 
 app = FastAPI()
 
@@ -36,5 +36,8 @@ def make_auth_request(request: Request, state: str):
 
 
 @app.get('/')
-def liveness_check():
+def index(request: Request, return_to: str = ""):
+    if return_to:
+        logger.warning(f"Redirecting to: {return_to}")
+        return RedirectResponse(url=return_to)
     return {'status': 'OK'}
